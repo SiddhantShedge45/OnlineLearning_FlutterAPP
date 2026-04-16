@@ -1,93 +1,80 @@
 import 'package:flutter/material.dart';
-import '../../home/screens/main_navigation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../home/screens/dashboard.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void loginUser() async {
+
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Login Successful")),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const Dashboard()),
+      );
+
+    } on FirebaseAuthException catch (e) {
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.message ?? "Login Failed")),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
 
+      appBar: AppBar(title: const Text("Login")),
+
       body: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.all(20),
 
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-
           children: [
 
-            const Text(
-              "Online Learning App",
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-              ),
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(labelText: "Email"),
             ),
 
-            const SizedBox(height: 40),
-
             TextField(
-              decoration: InputDecoration(
-                hintText: "Email",
-
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
+              controller: passwordController,
+              decoration: const InputDecoration(labelText: "Password"),
+              obscureText: true,
             ),
 
             const SizedBox(height: 20),
-
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: "Password",
-
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 30),
 
             ElevatedButton(
-
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 120,
-                  vertical: 15,
-                ),
-              ),
-
-              onPressed: () {
-
-                Navigator.pushReplacement(
-                  context,
-
-                  MaterialPageRoute(
-                    builder: (context) => const MainNavigation(),
-                  ),
-                );
-
-              },
-
+              onPressed: loginUser,
               child: const Text("Login"),
-
-            ),
-
-            const SizedBox(height: 20),
-
-            TextButton(
-              onPressed: () {},
-              child: const Text("Create Account"),
             ),
 
           ],
         ),
       ),
-
     );
   }
 }

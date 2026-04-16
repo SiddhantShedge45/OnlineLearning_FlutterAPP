@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "563083682756",
+    "project_id": "online-learning-erp",
+    "storage_bucket": "online-learning-erp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563083682756:android:01f3fe93944341ae48fa91",
+        "android_client_info": {
+          "package_name": "com.example.online_learning_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk52BGEfwEedXLno8jQVTwlCNHRssji24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
