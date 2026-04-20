@@ -1,253 +1,210 @@
-# 📚 Online Learning ERP App (Flutter)
+# 📚 Online Learning ERP App (Flutter + Firebase)
 
-A modern **Online Learning ERP System** developed using **Flutter** that allows students to access courses, watch video lectures, manage assignments, and track attendance through a mobile application.
+A modern **Online Learning ERP System** built using **Flutter** and **Firebase**, designed to provide a complete digital learning experience for students and administrators.
 
-This project demonstrates how Flutter can be used to build a **scalable educational learning platform** similar to modern EdTech systems.
+This project demonstrates how to build a **scalable EdTech platform** with real-time backend, cloud storage, and cross-platform support (Mobile + Web).
 
 ---
 
 # 🚀 Project Overview
 
-The **Online Learning ERP App** is a mobile application designed to simplify digital education management for students.
+The **Online Learning ERP App** is a full-stack application that enables:
 
-The application provides an integrated platform where students can:
-
-* Access courses and lecture videos
-* View and submit assignments
-* Track attendance
-* Manage profile information
-* Navigate learning modules easily
-
-The system follows a **modular Flutter architecture** which makes it scalable and easy to expand with additional ERP functionalities.
+* 🔐 Secure user authentication  
+* 📚 Course and content management  
+* 🎥 Video-based learning (YouTube integration)  
+* 📝 Assignment submission system (PDF upload)  
+* 👨‍🏫 Admin panel for content control  
+* 👨‍🎓 Student panel for learning  
 
 ---
 
 # 🎯 Objectives
 
-The primary goals of this project are:
-
-* To create a **mobile-based educational ERP system**
-* To provide **centralized access to learning resources**
-* To simplify **assignment and attendance tracking**
-* To develop a **modern and user-friendly learning platform**
+* Build a **mobile + web-based ERP system**
+* Provide **centralized learning resources**
+* Implement **real-time backend using Firebase**
+* Enable **assignment upload & tracking**
+* Create a **scalable modular architecture**
 
 ---
 
 # 📱 Features
 
-## 📚 Course Module
+## 👨‍🎓 Student Features
 
-* Displays available courses
-* Each course includes **video lectures**
-* YouTube video integration for learning content
+* Login using Firebase Authentication  
+* View courses  
+* Watch video lectures  
+* Access assignments  
+* Upload PDF submissions  
+* View profile  
+* Logout  
 
-## 🎥 Video Lecture System
+---
 
-* Embedded **YouTube video player**
-* Topic-based lecture streaming
+## 👨‍🏫 Admin Features
 
-## 📝 Assignment Module
-
-* Assignment list based on course topics
-* Assignment submission interface
-
-## 📊 Attendance Module
-
-* ERP-style attendance tracking
-* Attendance percentage calculation
-* Present day tracking
-
-## 👤 Profile Module
-
-* Student profile details
-* User information display
-
-## 🏠 Dashboard
-
-* Card-based navigation
-* Quick access to modules:
-
-  * Courses
-  * Assignments
-  * Attendance
-  * Profile
+* Add courses  
+* Add video lectures  
+* Create assignments  
+* Set due dates  
+* Manage content  
 
 ---
 
 # 🧱 Technology Stack
 
-| Technology             | Purpose                           |
-| ---------------------- | --------------------------------- |
-| Flutter                | Cross-platform mobile development |
-| Dart                   | Programming language              |
-| Material UI            | User interface components         |
-| YouTube Player Flutter | Video lecture integration         |
-| Android Studio         | Development environment           |
+| Technology              | Purpose                          |
+|------------------------|----------------------------------|
+| Flutter                | Cross-platform development       |
+| Dart                   | Programming language             |
+| Firebase Auth          | Authentication                   |
+| Cloud Firestore        | Database                         |
+| Firebase Storage       | File storage                     |
+| YouTube Player         | Video streaming                  |
+| VS Code / PowerShell   | Development tools                |
 
 ---
 
 # 📂 Project Structure
 
-```
-lib
+
+lib/
+├── app/
+│ └── app.dart
 │
-├── app
-│   └── app.dart
+├── features/
+│ ├── admin/
+│ ├── auth/
+│ ├── courses/
+│ ├── assignments/
+│ ├── attendance/
+│ ├── home/
+│ └── profile/
 │
-├── core
-│   ├── constants
-│   ├── theme
-│   │   └── app_theme.dart
-│   └── utils
-│
-├── features
-│
-│   ├── auth
-│   │   └── screens
-│   │       └── login_screen.dart
-│
-│   ├── home
-│   │   └── screens
-│   │       ├── dashboard.dart
-│   │       └── main_navigation.dart
-│
-│   ├── courses
-│   │   └── screens
-│   │       ├── courses_screen.dart
-│   │       └── video_player_screen.dart
-│
-│   ├── assignments
-│   │   └── screens
-│   │       └── assignment_screen.dart
-│
-│   ├── attendance
-│   │   └── screens
-│   │       └── attendance_screen.dart
-│
-│   └── profile
-│       └── profile_screen.dart
-│
+├── firebase_options.dart
 └── main.dart
-```
+
 
 ---
 
 # ⚙️ Installation Guide
 
-Follow the steps below to run the project locally.
+## 1️⃣ Clone Repository
 
-### 1️⃣ Clone the Repository
-
-```
+''bash
 git clone https://github.com/SiddhantShedge45/OnlineLearning_FlutterAPP.git
-```
-
----
-
-### 2️⃣ Navigate to Project Folder
-
-```
 cd OnlineLearning_FlutterAPP
-```
-
----
-
-### 3️⃣ Install Dependencies
-
-```
+2️⃣ Install Dependencies
 flutter pub get
-```
+3️⃣ Setup Firebase
+Install Firebase CLI
+npm install -g firebase-tools
+Install FlutterFire CLI
+dart pub global activate flutterfire_cli
+Configure Firebase
+flutterfire configure
 
----
+If path issue:
 
-### 4️⃣ Run the Application
-
-```
+& "C:\Users\HP\AppData\Local\Pub\Cache\bin\flutterfire.bat" configure
+4️⃣ Run Application
 flutter run
-```
 
-Make sure a **mobile device or emulator is connected**.
+For Web:
 
----
+flutter run -d chrome
+📦 Dependencies
+flutter pub add firebase_core
+flutter pub add firebase_auth
+flutter pub add cloud_firestore
+flutter pub add firebase_storage
+flutter pub add file_picker
+flutter pub add flutter_launcher_icons
+🗂️ Database Design (Firestore)
+📚 Courses
+courses
+ └── courseId
+      ├── title
+      ├── description
+🎥 Videos
+courses
+ └── courseId
+      └── videos
+            └── videoId
+                  ├── title
+                  ├── youtubeUrl
+📝 Assignments
+courses
+ └── courseId
+      └── assignments
+            └── assignmentId
+                  ├── title
+                  ├── description
+                  ├── dueDate
+📄 Submissions
+courses
+ └── courseId
+      └── assignments
+            └── assignmentId
+                  └── submissions
+                        └── userId
+                              ├── fileUrl
+                              ├── submittedAt
+🗄️ Firebase Storage Structure
+assignments/
+ └── userId/
+      └── file.pdf
+🔐 Firebase Security Rules
+Firestore (Development)
+allow read, write: if true;
+Firestore (Production)
+allow read: if request.auth != null;
+Storage Rules
+request.auth.uid == userId
+🧠 System Workflow
+User logs in
+Dashboard loads modules
+Courses display content
+Videos streamed via YouTube
+Assignments accessed
+Student uploads PDF
+File stored in Firebase Storage
+URL saved in Firestore
+🎨 UI Design Approach
+Clean modern layout
+Card-based dashboard
+Simple navigation
+Material UI components
+⚠️ Common Errors & Fixes
+❌ Permission Denied
 
-# 📦 Dependencies
+➡️ Fix Firestore rules
 
-Main Flutter packages used:
+❌ File Picker Error
+flutter clean
+flutter pub get
+❌ Firebase Not Connecting
+flutterfire configure
+🔮 Future Enhancements
+Role-based authentication
+QR-based attendance
+Paid course system
+Admin analytics dashboard
+Chat system
+Push notifications
+AI-based recommendations
+👨‍💻 Author
 
-```
-google_fonts
-youtube_player_flutter
-cupertino_icons
-```
+Siddhant Shedge
+Intern Developer – NetGains Technologies Pvt. Ltd.
 
----
+📄 License
 
-# 🖥️ Application Screens
+This project is developed for educational purposes only.
 
-The application currently includes:
+⭐ Final Note
 
-* Login Screen
-* Dashboard
-* Courses Screen
-* Video Lecture Player
-* Assignment Screen
-* Attendance Screen
-* Profile Screen
-
----
-
-# 🧠 System Workflow
-
-1. User logs into the application.
-2. Dashboard provides navigation to learning modules.
-3. Courses display video lecture topics.
-4. Students watch lectures via YouTube player.
-5. Assignments related to topics can be accessed.
-6. Attendance module tracks presence and percentage.
-7. Profile section displays student information.
-
----
-
-# 🎨 UI Design Approach
-
-The application UI focuses on:
-
-* Clean modern layout
-* Card-based dashboard
-* Material Design components
-* Simple navigation for students
-
----
-
-# 🔮 Future Enhancements
-
-The system can be extended with advanced features such as:
-
-* Firebase Authentication
-* Cloud database integration
-* Teacher dashboard
-* Admin panel
-* Push notifications
-* Online quiz system
-* Assignment file upload
-* Student progress tracking
-* AI-based learning recommendations
-* Timetable management system
-
----
-
-# 📬 Contact
-
-**Developer:** Siddhant Shedge
-
-📧 Email: *[siddhantshedge16@gmail.com](mailto:siddhantshedge16@gmail.com)*
-📱 Phone: *9921041736*
-
-GitHub Repository:
-https://github.com/SiddhantShedge45/OnlineLearning_FlutterAPP
-
----
-
-# 📄 License
-
-This project is developed for **educational and learning purposes**.
+This project is a strong foundation for a complete LMS/ERP system.
+With further enhancements, it can be transformed into a production-ready SaaS EdTech platform.
